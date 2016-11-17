@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ginger Payments</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/gijgo-modular/grid/css/grid.min.css" rel="stylesheet">
+
+    <script src="node_modules/gijgo-modular/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/gijgo-modular/grid/js/grid.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <span>Ginger Payments</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <main>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Task 1</h3>
+                        <button id="callback-button" class="form-control btn btn-primary">Callback</button>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Task 2</h3>
+                        <button id="promise-button" class="form-control btn btn-primary">Promise</button>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Task 3</h3>
+                        <select id="payment-filter-select" class="form-control">
+                            <option value="#">Please Select...</option>
+                            <option value="creditcard">Credit Card</option>
+                            <option value="bank-transfer">Bank Transfer</option>
+                            <option value="ideal">iDeal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Task 4</h3>
+                        <form id="add-new-payment-form" class="form" method="post" action="http://localhost:3000/payments">
+                            <div class="form-group">
+                                <label for="method">Method</label>
+                                <select id="method" name="method" class="form-control">
+                                    <option value="creditcard">Credit Card</option>
+                                    <option value="bank-transfer">Bank Transfer</option>
+                                    <option value="ideal">iDeal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">Amount</label>
+                                <input type="number" id="amount" name="amount" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="currency">Currency</label>
+                                <select id="currency" name="currency" class="form-control">
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="AUD">AUD</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="TRY">TRY</option>
+                                    <option value="TRY">CLP</option>
+                                </select>
+                            </div>
+                            <input type="hidden" id="created" name="created">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select id="status" name="status" class="form-control">
+                                    <option value="accepted">Accepted</option>
+                                    <option value="denied">Denied</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="merchant">Merchant</label>
+                                <input type="text" id="merchant" name="merchant" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Add" class="form-control btn btn-primary" />
+                            </div>
+                        </form>
+                        <div class="row" id="formResult">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Result</h3>
+                        <table id="grid-data"></table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
